@@ -1,7 +1,8 @@
+javascript-cheatsheet/tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  darkMode: 'class',
+  darkMode: 'class', // this is already set correctly
   theme: {
     extend: {
       screens: {

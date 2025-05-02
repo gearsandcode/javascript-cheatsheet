@@ -58,7 +58,7 @@ const TipCard: React.FC<TipCardProps> = ({ tip }) => {
 
   if (isEditing) {
     return (
-      <div className="p-2 rounded-lg border border-gray-200 bg-white text-xs">
+      <div className="p-2 rounded-lg border border-gray-700 bg-gray-800 text-xs">
         <div className="flex justify-between items-start mb-1.5">
           <input
             type="text"
@@ -175,10 +175,10 @@ const TipCard: React.FC<TipCardProps> = ({ tip }) => {
   }
 
   return (
-    <div className="p-2 rounded-lg border border-gray-200 bg-white text-xs">
+    <div className="p-2 rounded-lg border border-gray-700 bg-gray-800 text-xs">
       <div className="flex justify-between items-start mb-1">
         <div className="flex items-center gap-1.5">
-          <h3 className="font-bold text-gray-900">{tip.title}</h3>
+          <h3 className="font-bold text-white">{tip.title}</h3>
           <span
             className={`px-1.5 py-0.5 rounded-full text-[10px] font-medium ${categoryColors.bg} ${categoryColors.text}`}
           >
@@ -203,11 +203,9 @@ const TipCard: React.FC<TipCardProps> = ({ tip }) => {
         </div>
       </div>
 
-      <p className="text-gray-600 mb-1.5 whitespace-pre-wrap">
-        {tip.description}
-      </p>
+      <p className="text-white mb-1.5 whitespace-pre-wrap">{tip.description}</p>
 
-      <pre className="p-1.5 rounded bg-gray-50 border border-gray-200 overflow-x-auto font-mono text-[11px] text-gray-800">
+      <pre className="p-1.5 rounded bg-gray-700 border border-gray-800 overflow-x-auto font-mono text-[11px] text-white">
         <code className="whitespace-pre-wrap break-words">
           {tip.codeSnippet}
         </code>
