@@ -4,6 +4,9 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      screens: {
+        '3xl': '2560px',
+      },
       animation: {
         'slide-up': 'slideUp 0.3s ease-out forwards',
       },
