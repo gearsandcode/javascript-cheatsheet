@@ -1,43 +1,32 @@
-import React, { useState } from 'react';
-import { useTips } from '../context/TipsContext';
-import { Plus, X, ChevronDown, Check } from 'lucide-react';
-import { Combobox } from '@headlessui/react';
-
-const CATEGORIES = [
-  'Arrays',
-  'Async',
-  'DOM',
-  'Error Handling',
-  'ES6',
-  'Fundamentals',
-  'Numbers',
-  'OOP',
-  'Patterns',
-  'Performance',
-  'Strings',
-].sort();
+import React, { useState } from "react";
+import { useTips } from "../context/TipsContext";
+import { Plus, X, ChevronDown, Check } from "lucide-react";
+import { Combobox } from "@headlessui/react";
+import { CATEGORIES } from "../data/categories";
+import { getCategoryColor } from "../utils/getCategoryColor";
 
 const AddTipForm: React.FC = () => {
   const { addTip } = useTips();
   const [isOpen, setIsOpen] = useState(false);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [codeSnippet, setCodeSnippet] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [codeSnippet, setCodeSnippet] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
 
-  const filteredCategories = query === ''
-    ? CATEGORIES
-    : CATEGORIES.filter((category) =>
-        category.toLowerCase().includes(query.toLowerCase())
-      );
+  const filteredCategories =
+    query === ""
+      ? CATEGORIES
+      : CATEGORIES.filter((category) =>
+          category.toLowerCase().includes(query.toLowerCase())
+        );
 
   const resetForm = () => {
-    setTitle('');
-    setDescription('');
-    setCodeSnippet('');
+    setTitle("");
+    setDescription("");
+    setCodeSnippet("");
     setSelectedCategories([]);
-    setQuery('');
+    setQuery("");
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -53,9 +42,9 @@ const AddTipForm: React.FC = () => {
   };
 
   const toggleCategory = (category: string) => {
-    setSelectedCategories(prev =>
+    setSelectedCategories((prev) =>
       prev.includes(category)
-        ? prev.filter(c => c !== category)
+        ? prev.filter((c) => c !== category)
         : [...prev, category]
     );
   };
@@ -73,7 +62,7 @@ const AddTipForm: React.FC = () => {
               <X className="h-4 w-4" />
             </button>
           </div>
-          
+
           <form onSubmit={handleSubmit} className="space-y-2">
             <input
               type="text"
@@ -83,18 +72,27 @@ const AddTipForm: React.FC = () => {
               placeholder="Title"
               required
             />
-            
+
             <div className="relative">
-              <Combobox value={selectedCategories} onChange={setSelectedCategories} multiple>
+              <Combobox<string>
+                value={selectedCategories}
+                onChange={setSelectedCategories}
+                multiple
+              >
                 <div className="relative">
                   <div className="flex flex-wrap gap-1 p-1 border rounded-md">
-                    {selectedCategories.map(category => (
-                      <span key={category} className="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full">
+                    {selectedCategories.map((category) => (
+                      <span
+                        key={category}
+                        className={`text-xs px-2 py-0.5 rounded-full ${
+                          getCategoryColor(category).bg
+                        } ${getCategoryColor(category).text}`}
+                      >
                         {category}
                         <button
                           type="button"
                           onClick={() => toggleCategory(category)}
-                          className="ml-1 text-blue-600 hover:text-blue-800"
+                          className="ml-1 hover:text-red-600"
                         >
                           ×
                         </button>
@@ -116,17 +114,25 @@ const AddTipForm: React.FC = () => {
                         value={category}
                         className={({ active }) =>
                           `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
-                            active ? 'bg-blue-600 text-white' : 'text-gray-900'
+                            active ? "bg-blue-600 text-white" : "text-gray-900"
                           }`
                         }
                       >
                         {({ selected, active }) => (
                           <>
-                            <span className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}>
+                            <span
+                              className={`block truncate ${
+                                selected ? "font-medium" : "font-normal"
+                              }`}
+                            >
                               {category}
                             </span>
                             {selected && (
-                              <span className={`absolute inset-y-0 left-0 flex items-center pl-3 ${active ? 'text-white' : 'text-blue-600'}`}>
+                              <span
+                                className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+                                  active ? "text-white" : "text-blue-600"
+                                }`}
+                              >
                                 <Check className="h-4 w-4" />
                               </span>
                             )}
@@ -138,7 +144,7 @@ const AddTipForm: React.FC = () => {
                 </div>
               </Combobox>
             </div>
-            
+
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -147,7 +153,7 @@ const AddTipForm: React.FC = () => {
               rows={2}
               required
             />
-            
+
             <textarea
               value={codeSnippet}
               onChange={(e) => setCodeSnippet(e.target.value)}
@@ -156,7 +162,7 @@ const AddTipForm: React.FC = () => {
               rows={4}
               required
             />
-            
+
             <button
               type="submit"
               className="w-full py-1.5 px-3 bg-blue-600 text-white text-sm rounded-md hover:bg-blue-700"

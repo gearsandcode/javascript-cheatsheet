@@ -1,12 +1,12 @@
-import { Tip } from '../types';
-import { v4 as uuidv4 } from 'uuid';
+import { Tip } from "../types";
+import { v4 as uuidv4 } from "uuid";
 
 export const initialTips: Tip[] = [
   // Arrays
   {
     id: uuidv4(),
-    title: 'Array Methods',
-    description: '',
+    title: "Array Methods",
+    description: "",
     codeSnippet: `const fruits = ['apple', 'banana', 'orange', 'grape'];
 
 // pop() - removes and returns last element
@@ -38,14 +38,15 @@ console.log(evens); // [2, 4]
 // reduce() - accumulate values
 const sum = numbers.reduce((acc, n) => acc + n, 0);
 console.log(sum); // 15`,
-    categories: ['Arrays'],
+    categories: ["Arrays"],
   },
 
   // Async
   {
     id: uuidv4(),
-    title: 'Promise Basics',
-    description: 'A Promise represents an eventual result of an asynchronous operation. It can be in one of three states: pending, fulfilled, or rejected.',
+    title: "Promise Basics",
+    description:
+      "A Promise represents an eventual result of an asynchronous operation. It can be in one of three states: pending, fulfilled, or rejected.",
     codeSnippet: `// Creating a Promise
 const promise = new Promise((resolve, reject) => {
   const success = true;
@@ -61,12 +62,13 @@ const promise = new Promise((resolve, reject) => {
 promise
   .then(result => console.log(result))
   .catch(error => console.error(error));`,
-    categories: ['Async'],
+    categories: ["Async"],
   },
   {
     id: uuidv4(),
-    title: 'Promise Chaining',
-    description: 'Promises can be chained to handle a sequence of asynchronous operations, making the code more readable and maintainable.',
+    title: "Promise Chaining",
+    description:
+      "Promises can be chained to handle a sequence of asynchronous operations, making the code more readable and maintainable.",
     codeSnippet: `// Simulated API calls
 const getUser = (id) => {
   return new Promise(resolve => {
@@ -99,12 +101,13 @@ getUser(1)
   .catch(error => {
     console.error('Error:', error);
   });`,
-    categories: ['Async'],
+    categories: ["Async"],
   },
   {
     id: uuidv4(),
-    title: 'What is the event loop?',
-    description: 'The event loop is the mechanism that allows JavaScript to perform non-blocking operations despite being single-threaded.',
+    title: "What is the event loop?",
+    description:
+      "The event loop is the mechanism that allows JavaScript to perform non-blocking operations despite being single-threaded.",
     codeSnippet: `console.log('Start');
 
 setTimeout(() => {
@@ -121,26 +124,25 @@ console.log('End');
 // End
 // Promise 1
 // Timeout 1`,
-    categories: ['Async'],
+    categories: ["Async"],
   },
 
   // ES6
   {
     id: uuidv4(),
-    title: 'Generator Functions',
-    description: 'Generator functions can pause execution using yield and resume later, making them perfect for creating iterators and handling sequences of values.',
+    title: "Generator Functions",
+    description:
+      "Generator functions can pause execution using yield and resume later, making them perfect for creating iterators and handling sequences of values.",
     codeSnippet: `// Basic Generator
 function* numberSequence() {
   yield 1;
   yield 2;
-  yield 3;
 }
 
 // Using the generator
 const generator = numberSequence();
 console.log(generator.next()); // { value: 1, done: false }
 console.log(generator.next()); // { value: 2, done: false }
-console.log(generator.next()); // { value: 3, done: false }
 console.log(generator.next()); // { value: undefined, done: true }
 
 // Infinite Fibonacci sequence generator
@@ -170,34 +172,15 @@ const chat = conversation();
 console.log(chat.next().value);        // What's your name?
 console.log(chat.next('John').value);  // Hello John, how old are you?
 console.log(chat.next('25').value);    // John is 25 years old!`,
-    categories: ['ES6', 'Fundamentals'],
-  },
-
-  // Fundamentals
-  {
-    id: uuidv4(),
-    title: 'What is hoisting?',
-    description: 'Hoisting is JavaScript\'s default behavior of moving declarations to the top of their scope during compilation.',
-    codeSnippet: `// What we write
-console.log(name); // undefined
-var name = 'John';
-
-// How JavaScript sees it
-var name;
-console.log(name);
-name = 'John';
-
-// let and const are hoisted but not initialized
-console.log(age); // ReferenceError
-let age = 30;`,
-    categories: ['Fundamentals'],
+    categories: ["ES6", "Fundamentals"],
   },
 
   // Numbers
   {
     id: uuidv4(),
-    title: 'Number Operations',
-    description: 'Common number operations including rounding, random numbers, and mathematical functions.',
+    title: "Number Operations",
+    description:
+      "Common number operations including rounding, random numbers, and mathematical functions.",
     codeSnippet: `// Rounding methods
 console.log(Math.ceil(3.1));   // 4
 console.log(Math.floor(3.9));  // 3
@@ -220,30 +203,29 @@ console.log(Math.pow(2, 3));   // 8
 console.log(Math.sqrt(16));    // 4
 console.log(Math.min(2, 5, 1));// 1
 console.log(Math.max(2, 5, 1));// 5`,
-    categories: ['Numbers'],
+    categories: ["Numbers"],
   },
   {
     id: uuidv4(),
-    title: 'Parsing Numbers',
-    description: 'Using parseInt() and parseFloat() to convert strings to numbers with different bases and decimal points.',
+    title: "Parsing Numbers",
+    description:
+      "Using parseInt() and parseFloat() to convert strings to numbers with different bases and decimal points.",
     codeSnippet: `// parseInt() with different bases
 console.log(parseInt('42')); // 42
 console.log(parseInt('42px')); // 42
-console.log(parseInt('0xFF', 16)); // 255
-console.log(parseInt('11', 2)); // 3
 
 // parseFloat() for decimals
 console.log(parseFloat('3.14')); // 3.14
-console.log(parseFloat('3.14.15')); // 3.14
-console.log(parseFloat('3.14e-2')); // 0.0314`,
-    categories: ['Numbers'],
+console.log(parseFloat('3.14.15')); // 3.14`,
+    categories: ["Numbers"],
   },
 
   // OOP
   {
     id: uuidv4(),
-    title: 'Constructor Functions',
-    description: 'Constructors are special functions that create and initialize objects. They provide a way to create multiple instances of objects with the same properties and methods.',
+    title: "Constructor Functions",
+    description:
+      "Constructors are special functions that create and initialize objects. They provide a way to create multiple instances of objects with the same properties and methods.",
     codeSnippet: `// Constructor function
 function User(name, email) {
   // 'this' refers to the new object being created
@@ -287,12 +269,13 @@ class UserClass {
     return this.email;
   }
 }`,
-    categories: ['OOP'],
+    categories: ["OOP"],
   },
   {
     id: uuidv4(),
-    title: 'Can you explain prototypal inheritance?',
-    description: 'JavaScript objects have a special hidden property [[Prototype]] that links to another object. This creates an inheritance chain.',
+    title: "Can you explain prototypal inheritance?",
+    description:
+      "JavaScript objects have a special hidden property [[Prototype]] that links to another object. This creates an inheritance chain.",
     codeSnippet: `// Constructor function
 function Animal(name) {
   this.name = name;
@@ -312,14 +295,15 @@ Dog.prototype.constructor = Dog;
 
 const dog = new Dog('Rex');
 console.log(dog.speak()); // "Rex makes a sound"`,
-    categories: ['OOP'],
+    categories: ["OOP"],
   },
 
   // Patterns
   {
     id: uuidv4(),
-    title: 'Module Pattern and Closures',
-    description: 'The module pattern uses closures to create private state and expose a public API. A closure is a function that retains access to variables in its outer scope even after the outer function has returned.',
+    title: "Module Pattern and Closures",
+    description:
+      "The module pattern uses closures to create private state and expose a public API. A closure is a function that retains access to variables in its outer scope even after the outer function has returned.",
     codeSnippet: `// Module Pattern using Closure
 const createCounter = () => {
   // Private variables (closure scope)
@@ -353,14 +337,15 @@ console.log(counter.count); // undefined
 const counter2 = createCounter();
 console.log(counter2.getCount()); // 0
 console.log(counter.getCount()); // 1`,
-    categories: ['Patterns'],
+    categories: ["Patterns"],
   },
 
   // React
   {
     id: uuidv4(),
-    title: 'React Best Practices',
-    description: 'Essential React best practices for writing maintainable and performant applications.',
+    title: "React Best Practices",
+    description:
+      "Essential React best practices for writing maintainable and performant applications.",
     codeSnippet: `// Use functional components with hooks
 const UserProfile = ({ userId }) => {
   const [user, setUser] = useState(null);
@@ -399,12 +384,12 @@ const List = () => (
     <ListItem onClick={handleItemClick} />
   </>
 );`,
-    categories: ['React', 'Best Practices'],
+    categories: ["React", "Best Practices"],
   },
   {
     id: uuidv4(),
-    title: 'React Debugging Techniques',
-    description: '',
+    title: "React Debugging Techniques",
+    description: "",
     codeSnippet: `// React Developer Tools - Install Chrome/Firefox extension
 const App = () => (
   <React.StrictMode> {/* Helps catch bugs early */}
@@ -415,11 +400,7 @@ const App = () => (
 // Console debugging with component lifecycle
 function DebugComponent({ prop }) {
   console.log('Render:', { prop }); // Log render with props
-  console.table(complexData); // Table format for complex data
-  console.trace('Render path'); // Show component render path
-  
   if (prop.isInvalid) debugger; // Conditional breakpoint
-  
   return <div>{prop.value}</div>;
 }
 
@@ -451,12 +432,13 @@ const onRenderCallback = (id, phase, actualDuration) => {
 <Profiler id="Navigation" onRender={onRenderCallback}>
   <Navigation />
 </Profiler>`,
-    categories: ['React', 'Debugging'],
+    categories: ["React", "Debugging"],
   },
   {
     id: uuidv4(),
-    title: 'SSR vs CSR in React',
-    description: 'Comparison of Server-Side Rendering (SSR) and Client-Side Rendering (CSR) approaches in React applications.',
+    title: "SSR vs CSR in React",
+    description:
+      "Comparison of Server-Side Rendering (SSR) and Client-Side Rendering (CSR) approaches in React applications.",
     codeSnippet: `// Server-Side Rendering (SSR)
 // Pros: Better initial load, SEO friendly, great for static content, better on slow devices
 // Cons: Higher server load, more complex setup, full page reloads, higher hosting costs
@@ -488,12 +470,13 @@ function App() {
 // 1. Static Site Generation (SSG): Build-time rendering, best performance, limited to static content
 // 2. Incremental Static Regeneration (ISR): SSG with periodic rebuilds, good balance
 // 3. Progressive Hydration: Critical path SSR, lazy load non-critical components`,
-    categories: ['React', 'Architecture'],
+    categories: ["React", "Architecture"],
   },
   {
     id: uuidv4(),
-    title: 'React vs Vue vs Next.js',
-    description: 'Comparison of popular JavaScript frameworks: React, Vue, and Next.js.',
+    title: "React vs Vue vs Next.js",
+    description:
+      "Comparison of popular JavaScript frameworks: React, Vue, and Next.js.",
     codeSnippet: `// React
 // Pros: Large ecosystem, flexible, strong community, great for large apps, JSX
 // Cons: More boilerplate, requires additional libraries, steeper learning curve
@@ -540,14 +523,14 @@ export async function getStaticProps() {
     props: { data: { title: 'Hello' } }
   };
 }`,
-    categories: ['React', 'Frameworks', 'Comparison'],
+    categories: ["React", "Frameworks", "Comparison"],
   },
 
   // Strings
   {
     id: uuidv4(),
-    title: 'String Manipulation',
-    description: '',
+    title: "String Manipulation",
+    description: "",
     codeSnippet: `const str = '  Hello World!  ';
 
 // Case conversion
@@ -585,14 +568,15 @@ console.log(num.padEnd(5, '0'));   // "42000"
 const name = 'John';
 const age = 30;
 console.log(\`\${name} is \${age} years old\`); // "John is 30 years old"`,
-    categories: ['Strings'],
+    categories: ["Strings"],
   },
 
   // TypeScript
   {
     id: uuidv4(),
-    title: 'TypeScript Generics',
-    description: 'Generics allow you to write flexible, reusable functions and classes that work with different types while maintaining type safety.',
+    title: "TypeScript Generics",
+    description:
+      "Generics allow you to write flexible, reusable functions and classes that work with different types while maintaining type safety.",
     codeSnippet: `// Generic function
 function identity<T>(arg: T): T {
   return arg;
@@ -633,12 +617,13 @@ function loggingIdentity<T extends Lengthwise>(arg: T): T {
   console.log(arg.length);
   return arg;
 }`,
-    categories: ['TypeScript', 'Generics'],
+    categories: ["TypeScript", "Generics"],
   },
   {
     id: uuidv4(),
-    title: 'TypeScript Union and Intersection Types',
-    description: 'Union types allow a value to be one of several types, while intersection types combine multiple types into one.',
+    title: "TypeScript Union and Intersection Types",
+    description:
+      "Union types allow a value to be one of several types, while intersection types combine multiple types into one.",
     codeSnippet: `// Union type
 type StringOrNumber = string | number;
 
@@ -678,12 +663,13 @@ function getArea(shape: Shape): number {
       return shape.width * shape.height;
   }
 }`,
-    categories: ['TypeScript', 'Types'],
+    categories: ["TypeScript", "Types"],
   },
   {
     id: uuidv4(),
-    title: 'TypeScript Utility Types',
-    description: 'TypeScript includes several utility types to facilitate common type transformations.',
+    title: "TypeScript Utility Types",
+    description:
+      "TypeScript includes several utility types to facilitate common type transformations.",
     codeSnippet: `interface User {
   id: number;
   name: string;
@@ -693,19 +679,15 @@ function getArea(shape: Shape): number {
 
 // Partial - Makes all properties optional
 type PartialUser = Partial<User>;
-// { id?: number; name?: string; email?: string; age?: number; }
 
 // Required - Makes all properties required
 type RequiredUser = Required<User>;
-// { id: number; name: string; email: string; age: number; }
 
 // Pick - Constructs a type with selected properties
 type UserBasics = Pick<User, "name" | "email">;
-// { name: string; email: string; }
 
 // Omit - Constructs a type without specified properties
 type UserWithoutId = Omit<User, "id">;
-// { name: string; email: string; age?: number; }
 
 // Record - Creates a type with specified properties
 type UserRoles = Record<"admin" | "user", User>;
@@ -717,12 +699,13 @@ function createUser(name: string): User {
 }
 type NewUser = ReturnType<typeof createUser>;
 // type NewUser = User`,
-    categories: ['TypeScript', 'Types'],
+    categories: ["TypeScript", "Types"],
   },
   {
     id: uuidv4(),
-    title: 'TypeScript Type Guards',
-    description: 'Type guards are expressions that perform runtime checks to guarantee the type of a value in a scope.',
+    title: "TypeScript Type Guards",
+    description:
+      "Type guards are expressions that perform runtime checks to guarantee the type of a value in a scope.",
     codeSnippet: `// Type predicates
 function isString(value: unknown): value is string {
   return typeof value === "string";
@@ -773,10 +756,97 @@ function move(pet: Bird | Fish) {
     pet.swim();
   }
 }`,
-    categories: ['TypeScript', 'Types'],
+    categories: ["TypeScript", "Types"],
+  },
+  // For loop examples
+  {
+    id: uuidv4(),
+    title: "Different Types of For Loops",
+    description:
+      "JavaScript offers several ways to iterate through data using various for loop syntaxes.",
+    codeSnippet: `// Standard for loop
+for (let i = 0; i < 5; i++) {
+  console.log(i); // 0, 1, 2, 3, 4
+}
+
+// for...of loop (iterates over values in arrays, strings, etc.)
+const colors = ['red', 'green', 'blue'];
+for (const color of colors) {
+  console.log(color); // 'red', 'green', 'blue'
+}
+
+// for...in loop (iterates over enumerable properties of objects)
+const person = { name: 'John', age: 30, job: 'developer' };
+for (const key in person) {
+  console.log(\`\${key}: \${person[key]}\`); // "name: John", "age: 30", "job: developer"
+}
+
+// forEach method for arrays
+['a', 'b', 'c'].forEach((letter, index) => {
+  console.log(\`\${index}: \${letter}\`); // "0: a", "1: b", "2: c"
+});
+
+// Loop control statements
+for (let i = 0; i < 10; i++) {
+  if (i === 3) continue; // Skip iteration when i is 3
+  if (i === 7) break;    // Exit loop when i is 7
+  console.log(i);        // 0, 1, 2, 4, 5, 6
+}
+
+// Nested loops with labeled statements
+outerLoop: for (let i = 0; i < 3; i++) {
+  for (let j = 0; j < 3; j++) {
+    if (i === 1 && j === 1) {
+      break outerLoop; // Break out of both loops
+    }
+    console.log(\`\${i},\${j}\`); 
   }
+}
+// Logs: "0,0", "0,1", "0,2", "1,0"`,
+    categories: ["Fundamentals"],
+  },
+
+  // Object.entries example
+  {
+    id: uuidv4(),
+    title: "Object.entries for Object Iteration",
+    description:
+      "Object.entries() creates an array of key-value pairs from an object, making it easy to iterate through objects and transform them.",
+    codeSnippet: `const user = {
+  name: 'Alice',
+  age: 28,
+  role: 'Developer'
+};
+
+// Basic usage - get array of [key, value] pairs
+const entries = Object.entries(user);
+console.log(entries);
+// [['name', 'Alice'], ['age', 28], ['role', 'Developer']]
+
+// Iterating through key-value pairs
+for (const [key, value] of Object.entries(user)) {
+  console.log(\`\${key}: \${value}\`);
+}
+
+// Converting between objects and Maps
+const userMap = new Map(Object.entries(user));
+console.log(userMap.get('name')); // 'Alice'
+
+// Convert back to object from Map
+const backToObject = Object.fromEntries(userMap);
+console.log(backToObject); // { name: 'Alice', age: 28, role: 'Developer' }
+
+// Filtering object properties
+const filteredObject = Object.fromEntries(
+  Object.entries(user).filter(([key, value]) => 
+    typeof value === 'string'
+  )
+);
+console.log(filteredObject); // { name: 'Alice', role: 'Developer' }`,
+    categories: ["Objects", "ES6"],
+  },
 ].sort((a, b) => {
-  const categoryA = a.categories[0] || '';
-  const categoryB = b.categories[0] || '';
+  const categoryA = a.categories[0] || "";
+  const categoryB = b.categories[0] || "";
   return categoryA.localeCompare(categoryB);
 });
