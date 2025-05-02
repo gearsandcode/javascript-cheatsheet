@@ -23,9 +23,17 @@ console.log(fruits); // ['apple', 'kiwi', 'mango']
 
 // slice() - returns portion of array
 console.log(fruits.slice(1)); // ['kiwi', 'mango']
-console.log(fruits.slice(0, 2)); // ['apple', 'kiwi']
+console.log(fruits.slice(0, 2)); // ['apple', 'kiwi']`,
+    categories: ["Arrays"],
+  },
 
-const numbers = [1, 2, 3, 4, 5];
+  // Then add a new tip for transformation array methods
+  {
+    id: uuidv4(),
+    title: "Array Transformation Methods",
+    description: "Methods for transforming arrays into new arrays or values.",
+    codeSnippet: `const numbers = [1, 2, 3, 4, 5];
+
 
 // map() - transform elements
 const doubled = numbers.map(n => n * 2);
@@ -37,7 +45,15 @@ console.log(evens); // [2, 4]
 
 // reduce() - accumulate values
 const sum = numbers.reduce((acc, n) => acc + n, 0);
-console.log(sum); // 15`,
+console.log(sum); // 15
+
+// find() - get first element that passes test
+const found = numbers.find(n => n > 3);
+console.log(found); // 4
+
+// some() & every() - test conditions
+const hasEven = numbers.some(n => n % 2 === 0); // true
+const allPositive = numbers.every(n => n > 0); // true`,
     categories: ["Arrays"],
   },
 
@@ -371,12 +387,6 @@ const useDebounce = (value, delay) => {
   return debouncedValue;
 };
 
-// Memoization for expensive operations
-const MemoizedComponent = React.memo(({ data }) => {
-  const processedData = useMemo(() => expensiveOperation(data), [data]);
-  return <div>{processedData}</div>;
-});
-
 // Proper event handler naming and fragments
 const List = () => (
   <>
@@ -497,40 +507,16 @@ function ReactComponent() {
 // Pros: Gentle learning curve, built-in features, better performance, single file components
 // Cons: Smaller ecosystem, less flexibility, fewer job opportunities
 
-export default {
-  data() {
-    return { count: 0 };
-  },
-  template: \`
-    <div>
-      <p>{{ count }}</p>
-      <button @click="count++">Increment</button>
-    </div>
-  \`
-};
-
 // Next.js
 // Pros: Built-in SSR/SSG, file-based routing, API routes, zero config, great DX
-// Cons: React knowledge required, more complex deployment, higher hosting costs
-
-// Page with SSG
-export default function Page({ data }) {
-  return <div>{data.title}</div>;
-}
-
-export async function getStaticProps() {
-  return {
-    props: { data: { title: 'Hello' } }
-  };
-}`,
+// Cons: React knowledge required, more complex deployment, higher hosting costs`,
     categories: ["React", "Frameworks", "Comparison"],
   },
-
-  // Strings
+  // First tip focused on basic operations
   {
     id: uuidv4(),
-    title: "String Manipulation",
-    description: "",
+    title: "Basic String Operations",
+    description: "Essential string manipulation operations.",
     codeSnippet: `const str = '  Hello World!  ';
 
 // Case conversion
@@ -542,32 +528,37 @@ console.log(str.trim());           // "Hello World!"
 console.log(str.trimStart());      // "Hello World!  "
 console.log(str.trimEnd());        // "  Hello World!"
 
-// Searching and replacing
-console.log(str.includes('World')); // true
-console.log(str.startsWith('Hello')); // false (due to spaces)
-console.log(str.endsWith('!')); // false (due to spaces)
-console.log(str.indexOf('World')); // 7
-console.log(str.replace('World', 'JavaScript')); 
-
-// Splitting and joining
-const words = str.trim().split(' ');
-console.log(words); // ["Hello", "World!"]
-console.log(words.join('-')); // "Hello-World!"
-
-// Substring operations
-console.log(str.slice(2, 7));     // "Hello"
-console.log(str.substring(2, 7));  // "Hello"
-console.log(str.substr(2, 5));     // "Hello"
-
-// Padding
-const num = '42';
-console.log(num.padStart(5, '0')); // "00042"
-console.log(num.padEnd(5, '0'));   // "42000"
-
 // Template literals
 const name = 'John';
 const age = 30;
 console.log(\`\${name} is \${age} years old\`); // "John is 30 years old"`,
+    categories: ["Strings"],
+  },
+
+  // Second tip focused on searching and modifying
+  {
+    id: uuidv4(),
+    title: "String Search & Substrings",
+    description: "Methods for searching and extracting parts of strings.",
+    codeSnippet: `const str = 'Hello World!';
+
+// Searching and replacing
+console.log(str.includes('World')); // true
+console.log(str.startsWith('Hello')); // true
+console.log(str.endsWith('!')); // true
+console.log(str.indexOf('World')); // 6
+console.log(str.replace('World', 'JavaScript')); // "Hello JavaScript!"
+
+// Splitting and joining
+const words = str.split(' ');
+console.log(words); // ["Hello", "World!"]
+console.log(words.join('-')); // "Hello-World!"
+console.log(str.split('').reverse().join('')); // "!dlroW olleH"
+
+// Substring operations
+console.log(str.slice(0, 5));     // "Hello"
+console.log(str.substring(6, 11));  // "World"
+console.log(str.substr(6, 5));     // "World"`,
     categories: ["Strings"],
   },
 
@@ -703,107 +694,157 @@ type NewUser = ReturnType<typeof createUser>;
   },
   {
     id: uuidv4(),
-    title: "TypeScript Type Guards",
+    title: "TypeScript Basic Type Guards",
+    description: "Essential type guards for everyday TypeScript development.",
+    codeSnippet: `// typeof type guard
+  function processValue(value: string | number) {
+    if (typeof value === "string") {
+      console.log(value.toUpperCase()); // Only string methods available here
+    } else {
+      console.log(value.toFixed(2)); // Only number methods available here
+    }
+  }
+  
+  // instanceof type guard
+  class Animal {
+    name: string;
+    constructor(name: string) {
+      this.name = name;
+    }
+  }
+  
+  class Dog extends Animal {
+    bark() {
+      console.log("Woof!");
+    }
+  }
+  
+  function processAnimal(animal: Animal) {
+    if (animal instanceof Dog) {
+      animal.bark(); // TypeScript knows this is safe
+    }
+  }`,
+    categories: ["TypeScript", "Types"],
+  },
+
+  {
+    id: uuidv4(),
+    title: "TypeScript Advanced Type Guards",
     description:
-      "Type guards are expressions that perform runtime checks to guarantee the type of a value in a scope.",
-    codeSnippet: `// Type predicates
-function isString(value: unknown): value is string {
-  return typeof value === "string";
-}
-
-// typeof type guard
-function processValue(value: string | number) {
-  if (typeof value === "string") {
-    console.log(value.toUpperCase());
-  } else {
-    console.log(value.toFixed(2));
+      "Custom type guards and property checks for complex scenarios.",
+    codeSnippet: `// in operator as type guard
+  interface Bird {
+    fly(): void;
   }
-}
-
-// instanceof type guard
-class Animal {
-  name: string;
-  constructor(name: string) {
-    this.name = name;
+  
+  interface Fish {
+    swim(): void;
   }
-}
-
-class Dog extends Animal {
-  bark() {
-    console.log("Woof!");
+  
+  function move(pet: Bird | Fish) {
+    if ("fly" in pet) {
+      pet.fly();
+    } else {
+      pet.swim();
+    }
   }
-}
-
-function processAnimal(animal: Animal) {
-  if (animal instanceof Dog) {
-    animal.bark(); // TypeScript knows this is safe
+  
+  // Custom type predicates
+  function isString(value: unknown): value is string {
+    return typeof value === "string";
   }
-}
-
-// in operator as type guard
-interface Bird {
-  fly(): void;
-}
-
-interface Fish {
-  swim(): void;
-}
-
-function move(pet: Bird | Fish) {
-  if ("fly" in pet) {
-    pet.fly();
-  } else {
-    pet.swim();
+  
+  function processInput(input: unknown) {
+    if (isString(input)) {
+      // TypeScript knows input is a string here
+      return input.toLowerCase();
+    }
+    return String(input);
   }
-}`,
+  
+  // Discriminated unions
+  type Shape =
+    | { kind: "circle"; radius: number }
+    | { kind: "square"; size: number };
+  
+  function getArea(shape: Shape): number {
+    switch (shape.kind) {
+      case "circle":
+        return Math.PI * shape.radius ** 2;
+      case "square":
+        return shape.size ** 2;
+    }
+  }`,
     categories: ["TypeScript", "Types"],
   },
   // For loop examples
   {
     id: uuidv4(),
-    title: "Different Types of For Loops",
-    description:
-      "JavaScript offers several ways to iterate through data using various for loop syntaxes.",
+    title: "Basic For Loops",
+    description: "Standard for loops and their variations.",
     codeSnippet: `// Standard for loop
-for (let i = 0; i < 5; i++) {
-  console.log(i); // 0, 1, 2, 3, 4
-}
-
-// for...of loop (iterates over values in arrays, strings, etc.)
-const colors = ['red', 'green', 'blue'];
-for (const color of colors) {
-  console.log(color); // 'red', 'green', 'blue'
-}
-
-// for...in loop (iterates over enumerable properties of objects)
-const person = { name: 'John', age: 30, job: 'developer' };
-for (const key in person) {
-  console.log(\`\${key}: \${person[key]}\`); // "name: John", "age: 30", "job: developer"
-}
-
-// forEach method for arrays
-['a', 'b', 'c'].forEach((letter, index) => {
-  console.log(\`\${index}: \${letter}\`); // "0: a", "1: b", "2: c"
-});
-
-// Loop control statements
-for (let i = 0; i < 10; i++) {
-  if (i === 3) continue; // Skip iteration when i is 3
-  if (i === 7) break;    // Exit loop when i is 7
-  console.log(i);        // 0, 1, 2, 4, 5, 6
-}
-
-// Nested loops with labeled statements
-outerLoop: for (let i = 0; i < 3; i++) {
-  for (let j = 0; j < 3; j++) {
-    if (i === 1 && j === 1) {
-      break outerLoop; // Break out of both loops
-    }
-    console.log(\`\${i},\${j}\`); 
+  for (let i = 0; i < 5; i++) {
+    console.log(i); // 0, 1, 2, 3, 4
   }
-}
-// Logs: "0,0", "0,1", "0,2", "1,0"`,
+  
+  // Loop with multiple variables
+  for (let i = 0, j = 10; i < 5; i++, j--) {
+    console.log(i, j); // 0 10, 1 9, 2 8, 3 7, 4 6
+  }
+  
+  // Loop control statements
+  for (let i = 0; i < 10; i++) {
+    if (i === 3) continue; // Skip iteration when i is 3
+    if (i === 7) break;    // Exit loop when i is 7
+    console.log(i);        // 0, 1, 2, 4, 5, 6
+  }
+  
+  // Nested loops with labeled statements
+  outerLoop: for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      if (i === 1 && j === 1) {
+        break outerLoop; // Break out of both loops
+      }
+      console.log(\`\${i},\${j}\`); 
+    }
+  }
+  // Logs: "0,0", "0,1", "0,2", "1,0"`,
     categories: ["Fundamentals"],
+  },
+
+  {
+    id: uuidv4(),
+    title: "Modern For Loop Variations",
+    description: "ES6+ methods for iterating through data structures.",
+    codeSnippet: `// for...of loop (iterates over values in iterables)
+  const colors = ['red', 'green', 'blue'];
+  for (const color of colors) {
+    console.log(color); // 'red', 'green', 'blue'
+  }
+  
+  // for...in loop (iterates over enumerable properties)
+  const person = { name: 'John', age: 30, job: 'developer' };
+  for (const key in person) {
+    console.log(\`\${key}: \${person[key]}\`); // "name: John", etc.
+  }
+  
+  // forEach method for arrays
+  ['a', 'b', 'c'].forEach((letter, index) => {
+    console.log(\`\${index}: \${letter}\`); // "0: a", "1: b", "2: c"
+  });
+  
+  // Iterating through Maps
+  const map = new Map([['name', 'Alice'], ['age', 30]]);
+  for (const [key, value] of map) {
+    console.log(\`\${key}: \${value}\`);
+  }
+  
+  // Iterating through Sets
+  const set = new Set([1, 2, 3]);
+  for (const value of set) {
+    console.log(value);
+  }`,
+    categories: ["Fundamentals", "ES6"],
   },
 
   // Object.entries example
@@ -875,12 +916,41 @@ function Counter() {
 
 // Other options:
 // - React Context API: Built-in React solution, no devtools, no middleware
-// - Jotai: Atomic approach to state, great for small pieces of state
-// - Recoil: Facebook's experimental library, atom-based like Jotai
-// - MobX: Observable-based state management, less boilerplate than Redux
-// - XState: State machine-based, great for complex state transitions
-// - Valtio: Proxy-based state management with reactive updates`,
+// - MobX: Observable-based state management, less boilerplate than Redux`,
     categories: ["React", "State Management"],
+  },
+
+  // Add before the final sort() call
+
+  {
+    id: uuidv4(),
+    title: "Memoization for Performance",
+    description:
+      "Memoization is a technique that stores the results of expensive function calls to speed up subsequent calls with the same inputs.",
+    codeSnippet: `// Basic memoization implementation
+
+// Real-world use cases - Expensive API calls with same parameters
+const fetchUserData = memoize(async (userId) => {
+  const response = await fetch(\`/api/users/\${userId}\`);
+  return response.json();
+});
+
+import { useMemo } from 'react';
+
+function MyComponent({ data }) {
+  const processedData = useMemo(() => {
+    // Expensive calculation
+    return expensiveCalculation(data);
+  }, [data]); // Only recalculate when data changes
+}
+
+// Alternatives to manual memoization:
+// 1. useCallback in React for memoizing functions
+
+// Memoization drawbacks:
+// - Memory usage increases as cache grows
+// - Not suitable for functions with side effects`,
+    categories: ["Performance", "Patterns"],
   },
 ].sort((a, b) => {
   const categoryA = a.categories[0] || "";
