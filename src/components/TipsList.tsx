@@ -13,7 +13,7 @@ const TipsList: React.FC = () => {
   });
 
   return (
-    <div className="columns-1 md:columns-2 xl:columns-3 2xl:columns-4 3xl:columns-5 gap-2 space-y-2">
+    <div className="columns-1 md:columns-2 xl:columns-3 2xl:columns-4 3xl:columns-6 gap-2 space-y-2">
       {sortedTips.map((tip) => (
         <div key={tip.id} className="break-inside-avoid">
           <TipCard tip={tip} />
