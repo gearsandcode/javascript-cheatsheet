@@ -5,7 +5,8 @@ export default {
   theme: {
     extend: {
       screens: {
-        '3xl': '2560px',
+        '2xl': '1536px',
+        '3xl': '3456px',
       },
       animation: {
         'slide-up': 'slideUp 0.3s ease-out forwards',
