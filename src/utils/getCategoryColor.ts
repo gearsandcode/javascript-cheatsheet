@@ -14,6 +14,8 @@ export const getCategoryColor = (
       return { bg: "bg-amber-100", text: "text-amber-800" };
     case "fundamentals":
       return { bg: "bg-yellow-100", text: "text-yellow-800" };
+    case "state management":
+      return { bg: "bg-lime-100", text: "text-lime-800" };
 
     // Advanced features - cool colors
     case "async":
